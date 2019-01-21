@@ -38,13 +38,13 @@ public class PlayerMove : MonoBehaviour
         {
             walkanimator.enabled = true;
             player.GetComponent<SpriteRenderer>().flipX = true;
-            transform.position = new Vector3(transform.position.x - 0.04f, transform.position.y, transform.position.z);
+            transform.position = new Vector3(transform.position.x - 0.045f, transform.position.y, transform.position.z);
         }
         else if (Input.GetKey(KeyCode.D))
         {
             walkanimator.enabled = true;
             player.GetComponent<SpriteRenderer>().flipX = false;
-            transform.position = new Vector3(transform.position.x + 0.04f, transform.position.y, transform.position.z);
+            transform.position = new Vector3(transform.position.x + 0.045f, transform.position.y, transform.position.z);
         }
         else
         {
