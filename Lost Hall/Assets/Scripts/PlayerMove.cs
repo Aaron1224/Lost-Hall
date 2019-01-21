@@ -7,13 +7,15 @@ public class PlayerMove : MonoBehaviour
     private Animator walkanimator;
     public GameObject player;
     public Sprite walk_0;
+    float stepTimer;
+    public float timerSpeed;
 
     void Start()
     {
         player.GetComponent<SpriteRenderer>().sprite = walk_0;
-
         walkanimator = player.GetComponent<Animator>();
         walkanimator.enabled = false;
+        stepTimer = timerSpeed;
     }
 
 
@@ -38,13 +40,28 @@ public class PlayerMove : MonoBehaviour
         {
             walkanimator.enabled = true;
             player.GetComponent<SpriteRenderer>().flipX = true;
-            transform.position = new Vector3(transform.position.x - 0.045f, transform.position.y, transform.position.z);
+            transform.position = new Vector3(transform.position.x - 0.046f, transform.position.y, transform.position.z);
+
+            stepTimer -= Time.deltaTime;
+            if (stepTimer < 0)
+            {
+                FindObjectOfType<AudioController>().concreteStep.Play();
+                stepTimer = timerSpeed;
+            }
         }
         else if (Input.GetKey(KeyCode.D))
         {
             walkanimator.enabled = true;
             player.GetComponent<SpriteRenderer>().flipX = false;
-            transform.position = new Vector3(transform.position.x + 0.045f, transform.position.y, transform.position.z);
+            transform.position = new Vector3(transform.position.x + 0.046f, transform.position.y, transform.position.z);
+
+            stepTimer -= Time.deltaTime;
+            if(stepTimer < 0)
+            {
+
+                FindObjectOfType<AudioController>().concreteStep.Play();
+                stepTimer = timerSpeed;
+            }
         }
         else
         {
