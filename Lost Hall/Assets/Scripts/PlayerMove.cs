@@ -7,15 +7,15 @@ public class PlayerMove : MonoBehaviour
     private Animator walkanimator;
     public GameObject player;
     public Sprite walk_0;
-    float stepTimer;
-    public float timerSpeed;
+    public Sprite walk_5;
+    public Sprite walk_13;
+    public float walkSpeed = 0.046f;
 
     void Start()
     {
         player.GetComponent<SpriteRenderer>().sprite = walk_0;
         walkanimator = player.GetComponent<Animator>();
         walkanimator.enabled = false;
-        stepTimer = timerSpeed;
     }
 
 
@@ -23,6 +23,7 @@ public class PlayerMove : MonoBehaviour
     void Update()
     {
         Move();
+        StepSound();
     }
 
     private void Move()
@@ -40,33 +41,26 @@ public class PlayerMove : MonoBehaviour
         {
             walkanimator.enabled = true;
             player.GetComponent<SpriteRenderer>().flipX = true;
-            transform.position = new Vector3(transform.position.x - 0.046f, transform.position.y, transform.position.z);
-
-            stepTimer -= Time.deltaTime;
-            if (stepTimer < 0)
-            {
-                FindObjectOfType<AudioController>().concreteStep.Play();
-                stepTimer = timerSpeed;
-            }
+            transform.position = new Vector3(transform.position.x - walkSpeed, transform.position.y, transform.position.z);
         }
         else if (Input.GetKey(KeyCode.D))
         {
             walkanimator.enabled = true;
             player.GetComponent<SpriteRenderer>().flipX = false;
-            transform.position = new Vector3(transform.position.x + 0.046f, transform.position.y, transform.position.z);
-
-            stepTimer -= Time.deltaTime;
-            if(stepTimer < 0)
-            {
-
-                FindObjectOfType<AudioController>().concreteStep.Play();
-                stepTimer = timerSpeed;
-            }
+            transform.position = new Vector3(transform.position.x + walkSpeed, transform.position.y, transform.position.z);
         }
         else
         {
             walkanimator.enabled = false;
             player.GetComponent<SpriteRenderer>().sprite = walk_0;
+        }
+    }
+
+    void StepSound()
+    {
+        if (player.GetComponent<SpriteRenderer>().sprite == walk_5 || player.GetComponent<SpriteRenderer>().sprite == walk_13)
+        {
+            FindObjectOfType<AudioController>().concreteStep.Play();
         }
     }
 }
