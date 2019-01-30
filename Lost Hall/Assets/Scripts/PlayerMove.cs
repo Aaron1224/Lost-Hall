@@ -10,6 +10,7 @@ public class PlayerMove : MonoBehaviour
     public Sprite walk_5;
     public Sprite walk_13;
     public float walkSpeed = 0.046f;
+    bool jumped;
 
     void Start()
     {
@@ -30,7 +31,19 @@ public class PlayerMove : MonoBehaviour
     {
         if(Input.GetKey(KeyCode.W))
         {
-
+            if(transform.position.y < -0.25f)
+            {
+                jumped = false;
+            }
+            if (!jumped)
+            {
+                transform.position = Vector3.Lerp(transform.position, new Vector3(transform.position.x, 0f, transform.position.z), 0.2f);
+                jumped = true;
+            } 
+        }
+        else
+        {
+            jumped = false;
         }
         if (Input.GetKey(KeyCode.S))
         {

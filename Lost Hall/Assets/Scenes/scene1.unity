@@ -643,6 +643,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1266883120}
   - component: {fileID: 1266883121}
+  - component: {fileID: 1266883122}
   m_Layer: 0
   m_Name: Player Holder
   m_TagString: Untagged
@@ -682,6 +683,27 @@ MonoBehaviour:
   walk_5: {fileID: 21300010, guid: a8939b025e1c49345bf8e5abb60284cc, type: 3}
   walk_13: {fileID: 21300026, guid: a8939b025e1c49345bf8e5abb60284cc, type: 3}
   walkSpeed: 0.055
+--- !u!50 &1266883122
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1266883119}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &1319830779
 GameObject:
   m_ObjectHideFlags: 0
@@ -1047,7 +1069,6 @@ GameObject:
   - component: {fileID: 1668229300}
   - component: {fileID: 1668229299}
   - component: {fileID: 1668229298}
-  - component: {fileID: 1668229301}
   - component: {fileID: 1668229302}
   - component: {fileID: 1668229303}
   m_Layer: 0
@@ -1138,27 +1159,6 @@ Transform:
   m_Father: {fileID: 1266883120}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!50 &1668229301
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1668229297}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 1
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
 --- !u!58 &1668229302
 CircleCollider2D:
   m_ObjectHideFlags: 0
